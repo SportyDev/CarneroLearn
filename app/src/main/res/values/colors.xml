@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores existentes (ejemplos) -->
+    <color name="brand_blue">#5C9AF2</color> <!-- Cambiado para ser el color primario -->
+    <color name="background_gray">#F5F5F5</color>
+    <color name="text_dark">#212121</color>
+    <color name="text_gray">#757575</color>
+    <color name="inactive_gray">#BDBDBD</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
+
+    <!-- Nuevos colores para las tarjetas -->
+    <color name="studybook_background_color">#CAF0ED</color>
+    <color name="studybook_icon_tint_color">#4ECDC4</color>
+
+    <color name="vocabulary_background_color">#FFECC1</color>
+    <color name="vocabulary_icon_tint_color">#FFC133</color>
+
+    <color name="listening_background_color">#FFD2D2</color>
+    <color name="listening_icon_tint_color">#FF6C6C</color>
+
+    <color name="reading_background_color">#E5F4EF</color>
+    <color name="reading_icon_tint_color">#019863</color>
+</resources>
