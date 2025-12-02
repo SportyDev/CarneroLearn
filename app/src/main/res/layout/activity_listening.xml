@@ -5,293 +5,755 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F6F4"
+    android:background="#F9F5F1"
     tools:context=".ListeningActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:paddingBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavBarCard"
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/bg_header_gradient_purple"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivWatermark"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:alpha="0.15"
+        android:src="@drawable/ic_listening"
+        android:translationX="40dp"
+        android:translationY="-30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FFFFFF" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listening"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Train your ears"
+            android:textColor="#EDE7F6"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchBarLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="-24dp"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground"
+        app:startIconDrawable="@drawable/ic_search"
+        app:startIconTint="#9575CD">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search audio..."
+            android:paddingVertical="12dp"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBarLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="16dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="16dp">
+            android:paddingHorizontal="20dp">
 
             <TextView
-                android:id="@+id/textViewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="Listening"
-                android:textColor="#4A443E"
-                android:textSize="28sp"
+                android:layout_marginBottom="12dp"
+                android:text="Daily Challenge"
+                android:textColor="#2D3436"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#311B92"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/tvHeroTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EPISODE 12"
+                        android:textColor="#B39DDB"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvHeroTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Mystery of the Ocean"  android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/btnHeroPlay"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvHeroTag" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvHeroTitle">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_time"
+                            app:tint="#B39DDB" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="15 min left"
+                            android:textColor="#B39DDB"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btnHeroPlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_play"
+                        app:backgroundTint="#7E57C2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#FFFFFF" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="Beginner Level"
+                android:textColor="#2D3436"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="#FEFBF9"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="0dp">
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/tvTitle1"
+                    <LinearLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_purple_light"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_listening"
+                            app:tint="#7E57C2" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="A Day in the Life"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/btnPlay1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvDuration1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Duration: 2:30 min"
-                        android:textColor="@color/inactive_gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTitle1" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="A Day in the Life"
+                            android:textColor="#2D3436"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvLevel1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Level: Beginner"
-                        android:textColor="@color/inactive_gray"
-                        app:layout_constraintStart_toEndOf="@+id/tvDuration1"
-                        app:layout_constraintTop_toTopOf="@+id/tvDuration1" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/btnPlay1"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/circular_button_background"
-                        android:contentDescription="Play"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Beginner"
+                                android:textColor="#4CAF50"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" • 2:30 min"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnPlayBeginner1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
                         android:src="@drawable/ic_play"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@android:color/white" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        app:tint="#7E57C2" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="#FEFBF9"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="0dp">
-                <androidx.constraintlayout.widget.ConstraintLayout
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/tvTitle2"
+                    <LinearLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_red_light"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_restaurant"
+                            app:tint="#EF5350" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="My Last Vacation"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/btnPlay2"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvDuration2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Duration: 3:15 min"
-                        android:textColor="@color/inactive_gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTitle2" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ordering Food"
+                            android:textColor="#2D3436"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvLevel2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Level: Intermediate"
-                        android:textColor="@color/inactive_gray"
-                        app:layout_constraintStart_toEndOf="@+id/tvDuration2"
-                        app:layout_constraintTop_toTopOf="@+id/tvDuration2" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/btnPlay2"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/circular_button_background"
-                        android:contentDescription="Play"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Beginner"
+                                android:textColor="#4CAF50"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" • 1:50 min"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnPlayBeginner2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
                         android:src="@drawable/ic_play"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@android:color/white" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        app:tint="#7E57C2" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="#FEFBF9"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="0dp">
-                <androidx.constraintlayout.widget.ConstraintLayout
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/tvTitle3"
+                    <LinearLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_orange_light"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_star_outline"
+                            app:tint="#FFC107" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="Ordering Food"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/btnPlay3"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvDuration3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Duration: 1:50 min"
-                        android:textColor="@color/inactive_gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTitle3" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Movie Review"
+                            android:textColor="#2D3436"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvLevel3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Level: Beginner"
-                        android:textColor="@color/inactive_gray"
-                        app:layout_constraintStart_toEndOf="@+id/tvDuration3"
-                        app:layout_constraintTop_toTopOf="@+id/tvDuration3" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/btnPlay3"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/circular_button_background"
-                        android:contentDescription="Play"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Beginner"
+                                android:textColor="#4CAF50"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" • 4:20 min"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnPlayBeginner3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
                         android:src="@drawable/ic_play"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@android:color/white" />
+                        app:tint="#7E57C2" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="Intermediate Level"
+                android:textColor="#2D3436"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_blue_light"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_transportation"
+                            app:tint="#42A5F5" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="My Last Vacation"
+                            android:textColor="#2D3436"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Intermediate"
+                                android:textColor="#FF9800"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" • 3:15 min"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnPlayIntermediate1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_play"
+                        app:tint="#7E57C2" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="#FEFBF9"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="0dp">
-                <androidx.constraintlayout.widget.ConstraintLayout
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/tvTitle4"
+                    <LinearLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_green_light"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_airport"
+                            app:tint="#009688" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="Technology Impact"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/btnPlay4"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvDuration4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Duration: 5:00 min"
-                        android:textColor="@color/inactive_gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTitle4" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Flight Announcements"
+                            android:textColor="#2D3436"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvLevel4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Level: Advanced"
-                        android:textColor="@color/inactive_gray"
-                        app:layout_constraintStart_toEndOf="@+id/tvDuration4"
-                        app:layout_constraintTop_toTopOf="@+id/tvDuration4" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/btnPlay4"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/circular_button_background"
-                        android:contentDescription="Play"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Intermediate"
+                                android:textColor="#FF9800"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" • 3:10 min"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnPlayIntermediate2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
                         android:src="@drawable/ic_play"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@android:color/white" />
+                        app:tint="#7E57C2" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="Advanced Level"
+                android:textColor="#2D3436"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_green_light"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_technology"
+                            app:tint="#26A69A" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Technology Impact"
+                            android:textColor="#2D3436"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Advanced"
+                                android:textColor="#F44336"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" • 5:00 min"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnPlayAdvanced1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_play"
+                        app:tint="#7E57C2" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_blue_light"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_business"
+                            app:tint="#607D8B" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Job Interview Tips"
+                            android:textColor="#2D3436"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Advanced"
+                                android:textColor="#F44336"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" • 6:45 min"
+                                android:textColor="#90A4AE"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btnPlayAdvanced2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_play"
+                        app:tint="#7E57C2" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
-    </ScrollView>
-
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bottomNavBarCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="?attr/colorSurface"
-        app:cardElevation="8dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardElevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -398,17 +860,17 @@
 
                 <ImageView
                     android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_height="wrap_content"
                     android:contentDescription="Listening"
                     android:src="@drawable/ic_listening"
-                    app:tint="@color/listening_icon_tint_color" />
+                    app:tint="#7E57C2" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Listening"
-                    android:textColor="@color/listening_icon_tint_color"
+                    android:text="Listen"
+                    android:textColor="#7E57C2"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -440,7 +902,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

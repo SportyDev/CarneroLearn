@@ -1,0 +1,69 @@
+package com.sportydev.carnerolearnrenewed
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.switchmaterial.SwitchMaterial
+
+class SettingsActivity : BaseActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_settings)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        setupButtons()
+    }
+
+    private fun setupButtons() {
+        // 1. Botón Atrás
+        findViewById<ImageView>(R.id.btnBack).setOnClickListener {
+            finish() // Cierra esta actividad y vuelve a la anterior
+        }
+
+        // 2. Opción Editar Perfil
+        findViewById<LinearLayout>(R.id.optionProfile).setOnClickListener {
+            Toast.makeText(this, "Edit Profile feature coming soon!", Toast.LENGTH_SHORT).show()
+        }
+
+        // 3. Switch Sonido
+        val switchSound = findViewById<SwitchMaterial>(R.id.switchSound)
+        switchSound.setOnCheckedChangeListener { _, isChecked ->
+            val msg = if (isChecked) "Sound ON" else "Sound OFF"
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+            // Aquí guardarías la preferencia en SharedPreferences
+        }
+
+        // 4. Switch Recordatorios
+        val switchReminder = findViewById<SwitchMaterial>(R.id.switchReminder)
+        switchReminder.setOnCheckedChangeListener { _, isChecked ->
+            val msg = if (isChecked) "Daily reminders enabled" else "Reminders disabled"
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        }
+
+        // 5. Botón Log Out
+        findViewById<MaterialButton>(R.id.btnLogout).setOnClickListener {
+            // Aquí iría tu lógica real de cierre de sesión (Firebase Auth, etc)
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+
+            // Ejemplo: Volver a una pantalla de Login (si tuvieras una)
+            // val intent = Intent(this, LoginActivity::class.java)
+            // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            // startActivity(intent)
+
+            finish() // Por ahora solo cerramos
+        }
+    }
+}

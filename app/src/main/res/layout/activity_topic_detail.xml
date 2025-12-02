@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F5F1"
+    tools:context=".TopicDetail">
+
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@drawable/bg_header_curved"
+        android:backgroundTint="#5C6BC0"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivWatermark"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:alpha="0.15"
+        android:src="@drawable/ic_time"
+        android:translationX="40dp"
+        android:translationY="-30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FFFFFF" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/abc_ic_ab_back_material"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tvTopicTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
+        android:text="Past Continuous"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/headerBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="40dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/lblStructure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.1"
+                        android:text="STRUCTURE"
+                        android:textColor="#5C6BC0"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGrammarStructure"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="#F5F5F5"
+                        android:padding="12dp"
+                        android:text="Sujeto + Was/Were + Verbo(-ing)"
+                        android:textColor="#2D3436"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="16dp"
+                        android:background="#EEEEEE" />
+
+                    <TextView
+                        android:id="@+id/lblExplanation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.1"
+                        android:text="EXPLANATION"
+                        android:textColor="#5C6BC0"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDetailContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Description goes here..."
+                        android:textColor="#455A64"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="16dp"
+                        android:background="#EEEEEE" />
+
+                    <TextView
+                        android:id="@+id/lblExamples"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.1"
+                        android:text="EXAMPLES"
+                        android:textColor="#5C6BC0"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvExample1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="8dp"
+                            android:text="Example 1"
+                            android:textColor="#263238"
+                            android:textSize="15sp"
+                            app:drawableStartCompat="@drawable/ic_checkmark"
+                            app:drawableTint="#4CAF50"/>
+
+                        <TextView
+                            android:id="@+id/tvExample2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:drawablePadding="8dp"
+                            android:text="Example 2"
+                            android:textColor="#263238"
+                            android:textSize="15sp"
+                            app:drawableStartCompat="@drawable/ic_checkmark"
+                            app:drawableTint="#4CAF50"/>
+
+                        <TextView
+                            android:id="@+id/tvExample3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:drawablePadding="8dp"
+                            android:text="Example 3"
+                            android:textColor="#263238"
+                            android:textSize="15sp"
+                            app:drawableStartCompat="@drawable/ic_checkmark"
+                            app:drawableTint="#4CAF50"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#FFF8E1"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#FFECB3"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_star_outline"
+                        app:tint="#FFA000" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pro Tip"
+                            android:textColor="#FFA000"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Try using contractions like 'I wasn't' instead of 'I was not' to sound more natural."
+                            android:textColor="#BF360C"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="2dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#FFEBEE"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_education"
+                        app:tint="#D32F2F" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Common Mistake"
+                            android:textColor="#D32F2F"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCommonMistake"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Don't do this..."
+                            android:textColor="#C62828"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ready to practice?"
+                android:textColor="#2D3436"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:text="Complete the sentence:"
+                        android:textColor="#546E7A"
+                        android:textSize="14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="While I _______ (sleep), the phone rang."
+                        android:textColor="#2D3436"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCheckAnswer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Check Answer"
+                        app:cornerRadius="12dp"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#5C6BC0"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

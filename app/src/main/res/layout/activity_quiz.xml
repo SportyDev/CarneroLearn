@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainQuizContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/bg_white_flow"
+    tools:context=".QuizActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.2"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/anim_background2"
+        app:lottie_speed="0.8" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutQuizContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Close Quiz"
+            android:src="@drawable/ic_close"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#B0BEC5" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressBarQuiz"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:max="100"
+            android:progress="20"
+            app:indicatorColor="#4CAF50"
+            app:layout_constraintBottom_toBottomOf="@id/btnClose"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnClose"
+            app:layout_constraintTop_toTopOf="@id/btnClose"
+            app:showAnimationBehavior="outward"
+            app:trackColor="#E0E0E0"
+            app:trackCornerRadius="8dp"
+            app:trackThickness="8dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="32dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnClose">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_label"
+                        app:tint="#4A90E2" />
+
+                    <TextView
+                        android:id="@+id/tvTopicBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.1"
+                        android:text="TOPIC"
+                        android:textColor="#4A90E2"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="6dp"
+                    android:text="Loading question..."
+                    android:textColor="#2D3436"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/optionsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOption1"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="64dp"
+                android:paddingStart="16dp"
+                android:text="Option 1"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="#546E7A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_radio_button_unchecked"
+                app:iconPadding="16dp"
+                app:iconTint="#CFD8DC"
+                app:strokeColor="#CFD8DC"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOption2"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="64dp"
+                android:paddingStart="16dp"
+                android:text="Option 2"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="#546E7A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_radio_button_unchecked"
+                app:iconPadding="16dp"
+                app:iconTint="#CFD8DC"
+                app:strokeColor="#CFD8DC"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOption3"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="64dp"
+                android:paddingStart="16dp"
+                android:text="Option 3"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="#546E7A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_radio_button_unchecked"
+                app:iconPadding="16dp"
+                app:iconTint="#CFD8DC"
+                app:strokeColor="#CFD8DC"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOption4"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="64dp"
+                android:paddingStart="16dp"
+                android:text="Option 4"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="#546E7A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_radio_button_unchecked"
+                app:iconPadding="16dp"
+                app:iconTint="#CFD8DC"
+                app:strokeColor="#CFD8DC"
+                app:strokeWidth="2dp" />
+        </LinearLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieCorrectBurst"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:elevation="10dp"
+            android:focusable="false"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/anim_confetti2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutResults"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F9F5F1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp">
+
+            <ImageView
+                android:id="@+id/ivResultIcon"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_circle_orange_light"
+                android:padding="28dp"
+                android:src="@drawable/ic_emoji_events"
+                app:tint="#FFC107" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieConfetti"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/anim_confetti" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvResultTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quiz Completed!"
+            android:textColor="#2D3436"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFinalScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="You scored 0/0"
+            android:textColor="#4A90E2"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvResultMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Great job! Keep learning."
+            android:textColor="#90A4AE"
+            android:textSize="16sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRestart"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="48dp"
+            android:text="Try Again"
+            android:textSize="18sp"
+            app:backgroundTint="#4A90E2"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFinish"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:text="Finish Review"
+            android:textColor="#90A4AE"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

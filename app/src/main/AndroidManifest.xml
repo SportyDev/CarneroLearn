@@ -12,6 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarneroLearnRenewed">
         <activity
+            android:name=".QuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListeningDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReadingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TopicDetail"
+            android:exported="false" />
+        <activity
             android:name=".ListeningActivity"
             android:exported="false" />
         <activity
