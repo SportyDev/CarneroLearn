@@ -39,13 +39,10 @@ class WordAdapter(private val words: List<Word>) :
         holder.tvTranslation.text = word.spanish
         holder.chkMastered.isChecked = word.isMastered
 
-        // --- LÓGICA DE PRONUNCIACIÓN ---
         holder.btnPronounce.setOnClickListener {
-            // Usamos nuestro Singleton para hablar
             TtsManager.speak(word.english)
         }
 
-        // Lógica del Checkbox (Solo visual por ahora)
         holder.chkMastered.setOnCheckedChangeListener { _, isChecked ->
             word.isMastered = isChecked
         }

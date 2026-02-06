@@ -26,7 +26,6 @@ class VocabularyActivity : BaseActivity() {
     }
 
     private fun setupCategoryClicks() {
-        // Asegúrate de que estos IDs coincidan con tu XML activity_vocabulary.xml
 
         // 1. Airport (Azul)
         findViewById<MaterialCardView>(R.id.cardAirport)?.setOnClickListener {
@@ -68,7 +67,7 @@ class VocabularyActivity : BaseActivity() {
             openCategory("Sports", "#8BC34A")
         }
 
-        // Agrega Health, Education si los pusiste en el XML
+        // falta  Health, Education
     }
 
     private fun openCategory(name: String, colorHex: String) {
@@ -89,7 +88,6 @@ class VocabularyActivity : BaseActivity() {
             overridePendingTransition(0, 0)
         }
 
-        // Vocabulary ya estamos aquí, no hacemos nada
 
         findViewById<LinearLayout>(R.id.nav_listening).setOnClickListener {
             startActivity(Intent(this, ListeningActivity::class.java))

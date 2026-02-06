@@ -283,57 +283,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ready to practice?"
-                android:textColor="#2D3436"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="12dp"/>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="#FFFFFF">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:text="Complete the sentence:"
-                        android:textColor="#546E7A"
-                        android:textSize="14sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:text="While I _______ (sleep), the phone rang."
-                        android:textColor="#2D3436"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnCheckAnswer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Check Answer"
-                        app:cornerRadius="12dp"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#5C6BC0"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

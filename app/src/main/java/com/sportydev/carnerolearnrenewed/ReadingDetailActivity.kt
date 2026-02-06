@@ -47,11 +47,8 @@ class ReadingDetailActivity : BaseActivity() {
         val fabQuiz = findViewById<ExtendedFloatingActionButton>(R.id.btnStartQuiz)
 
         fabQuiz.setOnClickListener {
-            // PASO 1: Recuperar el título que recibió esta actividad
-            // Usamos "STORY_TITLE" porque así lo llamamos en ReadingActivity
             val currentStoryTitle = intent.getStringExtra("STORY_TITLE") ?: "The Lost Key"
 
-            // PASO 2: Iniciar el Quiz enviando ese título
             val intent = Intent(this, QuizActivity::class.java)
 
             // Usamos "QUIZ_TOPIC" porque es lo que QuizActivity espera recibir

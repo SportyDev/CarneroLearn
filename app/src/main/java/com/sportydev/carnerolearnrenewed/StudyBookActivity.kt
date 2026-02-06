@@ -25,6 +25,7 @@ class StudyBookActivity : BaseActivity() {
         setupBottomNavigation()
     }
 
+    //con esta funcion cada vez que el evento se dispara condfigura con ayuda la funcion open topic
     private fun setupTopicCards() {
         // 1. Past Continuous (Azul)
         findViewById<MaterialCardView>(R.id.cardPastContinuous).setOnClickListener {
@@ -67,7 +68,7 @@ class StudyBookActivity : BaseActivity() {
                 ex3 = "Have you ever been to Mexico?",
                 mistake = "No uses tiempos específicos como 'Yesterday'.",
                 colorHex = "#FFA726",
-                iconRes = R.drawable.ic_education // O ic_checkmark si lo tienes
+                iconRes = R.drawable.ic_checkmark
             )
         }
 
@@ -97,7 +98,7 @@ class StudyBookActivity : BaseActivity() {
                 ex3 = "If I were rich, I would travel.",
                 mistake = "En el 2do condicional, usa 'If I were', no 'If I was'.",
                 colorHex = "#26A69A",
-                iconRes = R.drawable.ic_transportation // O ic_conditional
+                iconRes = R.drawable.ic_conditional
             )
         }
 
@@ -112,7 +113,7 @@ class StudyBookActivity : BaseActivity() {
                 ex3 = "My car has been stolen.",
                 mistake = "Cuidado con los tiempos del verbo To Be.",
                 colorHex = "#78909C",
-                iconRes = R.drawable.ic_settings // O ic_arrows_swap
+                iconRes = R.drawable.ic_arrows_swap
             )
         }
 
@@ -127,7 +128,7 @@ class StudyBookActivity : BaseActivity() {
                 ex3 = "They asked where I lived.",
                 mistake = "Cambia 'Tomorrow' por 'The next day'.",
                 colorHex = "#FF7043",
-                iconRes = R.drawable.ic_studybook // O ic_quote
+                iconRes = R.drawable.ic_quote
             )
         }
 
@@ -142,12 +143,12 @@ class StudyBookActivity : BaseActivity() {
                 ex3 = "Students have to wear uniforms.",
                 mistake = "Nunca uses 'to' después de un modal (excepto have to).",
                 colorHex = "#5E35B1",
-                iconRes = R.drawable.ic_education // O ic_book
+                iconRes = R.drawable.ic_book
             )
         }
     }
 
-    // Función actualizada con COLOR e ICONO
+
     private fun openTopic(
         title: String,
         structure: String,
@@ -167,12 +168,11 @@ class StudyBookActivity : BaseActivity() {
         intent.putExtra("EXTRA_EXAMPLE_2", ex2)
         intent.putExtra("EXTRA_EXAMPLE_3", ex3)
         intent.putExtra("EXTRA_MISTAKE", mistake)
-        intent.putExtra("EXTRA_COLOR", colorHex) // Nuevo
-        intent.putExtra("EXTRA_ICON", iconRes)   // Nuevo
+        intent.putExtra("EXTRA_COLOR", colorHex)
+        intent.putExtra("EXTRA_ICON", iconRes)
         startActivity(intent)
     }
 
-    // ... setupBottomNavigation igual que antes ...
     private fun setupBottomNavigation() {
         findViewById<LinearLayout>(R.id.nav_home).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))

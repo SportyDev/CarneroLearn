@@ -53,7 +53,7 @@ class TopicDetail : BaseActivity() {
         val ex3 = intent.getStringExtra("EXTRA_EXAMPLE_3")
         val mistake = intent.getStringExtra("EXTRA_MISTAKE")
 
-        val colorHex = intent.getStringExtra("EXTRA_COLOR") ?: "#5C6BC0" // Default Azul
+        val colorHex = intent.getStringExtra("EXTRA_COLOR") ?: "#5C6BC0"
         val iconRes = intent.getIntExtra("EXTRA_ICON", R.drawable.ic_time)
 
         // 3. Aplicar datos
@@ -65,7 +65,7 @@ class TopicDetail : BaseActivity() {
         tvEx3.text = ex3
         tvMistake.text = mistake
 
-        // 4. Aplicar Estilos Dinámicos (Color y Icono)
+        // 4. Aplicar Estilos Dinamicos (Color y Icono)
         try {
             val color = Color.parseColor(colorHex)
 
@@ -84,7 +84,7 @@ class TopicDetail : BaseActivity() {
             e.printStackTrace()
         }
 
-        // Botón Atrás
+        // boton atras
         btnBack.setOnClickListener { finish() }
     }
 }

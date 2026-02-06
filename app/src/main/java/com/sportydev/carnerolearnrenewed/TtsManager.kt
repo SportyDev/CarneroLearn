@@ -1,4 +1,4 @@
-package com.sportydev.carnerolearnrenewed // Asegúrate que coincida con tu proyecto
+package com.sportydev.carnerolearnrenewed
 
 import android.content.Context
 import android.speech.tts.TextToSpeech
@@ -10,20 +10,14 @@ object TtsManager : TextToSpeech.OnInitListener {
     private var tts: TextToSpeech? = null
     private var isReady = false
 
-    /**
-     * Inicializa el motor. Llámalo en el onCreate de tu MainActivity.
-     */
+
     fun initialize(context: Context) {
         if (tts == null) {
             tts = TextToSpeech(context, this)
         }
     }
 
-    /**
-     * Habla el texto.
-     * @param text Lo que dirá.
-     * @param slow Si es true, habla más lento (útil para principiantes).
-     */
+
     fun speak(text: String, slow: Boolean = false) {
         if (isReady) {
             // Ajustar velocidad: 0.8f es normal-lento, 0.5f es muy lento para estudiar

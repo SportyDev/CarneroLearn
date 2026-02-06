@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast // Importante para feedback visual
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -24,15 +24,14 @@ class MainActivity : BaseActivity() {
             insets
         }
 
-        // 1. INICIALIZAR TTS MANAGER (Una sola línea)
         TtsManager.initialize(this)
 
         setupBottomNavigation()
-        setupWordOfTheDay() // Aquí usamos el TTS
+        setupWordOfTheDay()
         setupHeaderButtons()
     }
 
-    // Lógica para la Palabra del Día
+    // Metodo para configurar la palabra del dia
     private fun setupWordOfTheDay() {
         val btnAudio = findViewById<ImageButton>(R.id.btnWodListen)
         val tvWord = findViewById<TextView>(R.id.tvWodEnglish)
@@ -40,27 +39,24 @@ class MainActivity : BaseActivity() {
         btnAudio.setOnClickListener {
             val wordToSpeak = tvWord.text.toString()
 
-            // 2. USAR EL TTS MANAGER (Súper simple)
             TtsManager.speak(wordToSpeak)
 
-            // Feedback visual opcional
-            Toast.makeText(this, "🔊 $wordToSpeak", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, " $wordToSpeak", Toast.LENGTH_SHORT).show()
         }
     }
 
-    // Configuración del botón de Settings en el Header
+    // Metodo para los botones del header, el boton de settings y el
     private fun setupHeaderButtons() {
         findViewById<ImageButton>(R.id.btnSettings).setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))        }
 
-        // Configuración del botón grande "Next Lesson"
+        // Configuracion del boton grande "Next Lesson"
         findViewById<FloatingActionButton>(R.id.btnStartLesson).setOnClickListener {
             startActivity(Intent(this, StudyBookActivity::class.java))
         }
     }
 
     private fun setupBottomNavigation() {
-        // ... (Tu código de navegación igual que antes) ...
         findViewById<LinearLayout>(R.id.nav_home).setOnClickListener { }
 
         findViewById<LinearLayout>(R.id.nav_study).setOnClickListener {
@@ -81,11 +77,9 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    // 3. LIMPIEZA DE RECURSOS
+    // LIMPIEZA DE RECURSOS
     override fun onDestroy() {
-        // Solo si quieres matar el TTS al salir de la app por completo.
-        // Si quieres que siga disponible en otras pantallas, no llames a shutdown() aquí,
-        // sino en la Application class o deja que Android lo maneje.
+
         TtsManager.stop()
         super.onDestroy()
     }

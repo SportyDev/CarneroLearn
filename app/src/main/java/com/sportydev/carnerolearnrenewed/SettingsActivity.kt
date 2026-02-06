@@ -30,7 +30,7 @@ class SettingsActivity : BaseActivity() {
     private fun setupButtons() {
         // 1. Botón Atrás
         findViewById<ImageView>(R.id.btnBack).setOnClickListener {
-            finish() // Cierra esta actividad y vuelve a la anterior
+            finish()
         }
 
         // 2. Opción Editar Perfil
@@ -43,7 +43,6 @@ class SettingsActivity : BaseActivity() {
         switchSound.setOnCheckedChangeListener { _, isChecked ->
             val msg = if (isChecked) "Sound ON" else "Sound OFF"
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-            // Aquí guardarías la preferencia en SharedPreferences
         }
 
         // 4. Switch Recordatorios
@@ -55,15 +54,11 @@ class SettingsActivity : BaseActivity() {
 
         // 5. Botón Log Out
         findViewById<MaterialButton>(R.id.btnLogout).setOnClickListener {
-            // Aquí iría tu lógica real de cierre de sesión (Firebase Auth, etc)
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
 
-            // Ejemplo: Volver a una pantalla de Login (si tuvieras una)
-            // val intent = Intent(this, LoginActivity::class.java)
-            // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            // startActivity(intent)
 
-            finish() // Por ahora solo cerramos
+
+            finish()
         }
     }
 }

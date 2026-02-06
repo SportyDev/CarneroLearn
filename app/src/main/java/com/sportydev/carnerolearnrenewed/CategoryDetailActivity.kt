@@ -21,17 +21,17 @@ class CategoryDetailActivity : BaseActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_category_detail)
 
-        // 0. Inicializar TTS (Para que el adaptador pueda usarlo)
+        // Inicializa TTS
         TtsManager.initialize(this)
 
-        // 1. Recibir datos del Intent
+        // Recibe datos
         val categoryName = intent.getStringExtra("CATEGORY_NAME") ?: "Vocabulary"
         val colorHex = intent.getStringExtra("CATEGORY_COLOR") ?: "#4A90E2"
 
-        // 2. Configurar UI
+        // Configurar UI
         setupHeader(categoryName, colorHex)
 
-        // 3. Obtener datos y configurar RecyclerView
+        //  Obtener datos y configurar RecyclerView
         val wordsList = getMockWords(categoryName)
         val recyclerView = findViewById<RecyclerView>(R.id.rvWords)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -39,7 +39,7 @@ class CategoryDetailActivity : BaseActivity() {
         // Pasamos la lista al adaptador. El adaptador usará TtsManager internamente.
         recyclerView.adapter = WordAdapter(wordsList)
 
-        // 4. Configurar Botón Atrás
+        // Configurar Botón Atrás
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             finish()
         }
@@ -72,7 +72,6 @@ class CategoryDetailActivity : BaseActivity() {
                 "Business" -> ivWatermark.setImageResource(R.drawable.ic_business)
                 "Health" -> ivWatermark.setImageResource(R.drawable.ic_health)
                 "Education" -> ivWatermark.setImageResource(R.drawable.ic_education)
-                // Agrega defaults si faltan
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -169,7 +168,7 @@ class CategoryDetailActivity : BaseActivity() {
                     )
                 )
             }
-            // ... Agrega más categorías si quieres ...
+            // ...  ...
             else -> {
                 list.add(
                     Word(
@@ -187,7 +186,6 @@ class CategoryDetailActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        // Opcional: Detener TTS si sales de la categoría
         TtsManager.stop()
         super.onDestroy()
     }
