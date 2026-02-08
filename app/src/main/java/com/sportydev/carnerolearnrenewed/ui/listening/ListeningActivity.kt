@@ -1,4 +1,4 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.ui.listening
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.sportydev.carnerolearnrenewed.ui.listening.ListeningDetailActivity
+import com.sportydev.carnerolearnrenewed.R
+import com.sportydev.carnerolearnrenewed.ui.reading.ReadingActivity
+import com.sportydev.carnerolearnrenewed.ui.grammar.StudyBookActivity
+import com.sportydev.carnerolearnrenewed.ui.base.BaseActivity
+import com.sportydev.carnerolearnrenewed.ui.main.MainActivity
+import com.sportydev.carnerolearnrenewed.ui.vocabulary.VocabularyActivity
 
 class ListeningActivity : BaseActivity() {
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@drawable/bg_white_flow"
-    tools:context=".QuizActivity">
+    tools:context=".ui.quiz.QuizActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieBg"

@@ -1,8 +1,9 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.utils
 
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.SoundPool
+import com.sportydev.carnerolearnrenewed.R
 
 object SoundManager {
 

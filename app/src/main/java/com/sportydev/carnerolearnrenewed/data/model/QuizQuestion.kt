@@ -1,4 +1,4 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.data.model
 
 data class QuizQuestion(
     val question: String,

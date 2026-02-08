@@ -1,4 +1,4 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.utils
 
 import android.content.Context
 import android.speech.tts.TextToSpeech

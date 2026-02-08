@@ -1,4 +1,4 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.ui.reading
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,10 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.sportydev.carnerolearnrenewed.R
+import com.sportydev.carnerolearnrenewed.ui.base.BaseActivity
+import com.sportydev.carnerolearnrenewed.ui.quiz.QuizActivity
+import com.sportydev.carnerolearnrenewed.utils.TtsManager
 
 class ReadingDetailActivity : BaseActivity() {
 

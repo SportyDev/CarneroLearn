@@ -1,6 +1,5 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.ui.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -10,6 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.sportydev.carnerolearnrenewed.R
+import com.sportydev.carnerolearnrenewed.ui.base.BaseActivity
 
 class SettingsActivity : BaseActivity() {
 

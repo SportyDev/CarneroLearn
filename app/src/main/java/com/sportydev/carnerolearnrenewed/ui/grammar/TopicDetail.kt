@@ -1,16 +1,17 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.ui.grammar
 
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.view.View
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.sportydev.carnerolearnrenewed.R
+import com.sportydev.carnerolearnrenewed.ui.base.BaseActivity
 
 class TopicDetail : BaseActivity() {
 

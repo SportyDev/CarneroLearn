@@ -1,4 +1,4 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.ui.quiz
 
 import android.animation.ObjectAnimator
 import android.content.res.ColorStateList
@@ -14,8 +14,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieDrawable
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.sportydev.carnerolearnrenewed.data.model.QuizQuestion
+import com.sportydev.carnerolearnrenewed.R
+import com.sportydev.carnerolearnrenewed.utils.SoundManager
 
 class QuizActivity : AppCompatActivity() {
 
@@ -191,7 +195,7 @@ class QuizActivity : AppCompatActivity() {
 
             // Activar confeti
             lottieConfetti.visibility = View.VISIBLE
-            lottieConfetti.repeatCount = com.airbnb.lottie.LottieDrawable.INFINITE
+            lottieConfetti.repeatCount = LottieDrawable.INFINITE
             lottieConfetti.playAnimation()
         } else {
             tvResultMessage.text = "Don't give up! Try again."

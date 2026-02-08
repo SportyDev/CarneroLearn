@@ -1,4 +1,5 @@
-package com.sportydev.carnerolearnrenewed
+package com.sportydev.carnerolearnrenewed.ui.base
+
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
