@@ -141,5 +141,7 @@ class AdminBd(private val contexto: Context) : SQLiteOpenHelper(contexto, DATABA
         }
         cursor.close()
         return wordList
+
     }
+
 }
