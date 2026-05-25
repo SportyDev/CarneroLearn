@@ -19,6 +19,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.sportydev.carnerolearnrenewed.data.model.QuizQuestion
 import com.sportydev.carnerolearnrenewed.R
+import com.sportydev.carnerolearnrenewed.data.local.AdminBd
 import com.sportydev.carnerolearnrenewed.utils.SoundManager
 
 class QuizActivity : AppCompatActivity() {
@@ -29,6 +30,10 @@ class QuizActivity : AppCompatActivity() {
     private var score = 0
     private var isAnswered = false
     private var currentTopic = ""
+
+    // NUEVAS VARIABLES PARA EL CONTEXTO
+    private var contextType = ""
+    private var contextId = -1
 
     // --- REFERENCIAS DE UI ---
     // Contenedores
@@ -47,9 +52,12 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var lottieConfetti: LottieAnimationView
     private lateinit var lottieCorrectBurst: LottieAnimationView
 
+    private lateinit var adminBd: AdminBd
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
+        adminBd = AdminBd(this)
 
         // 1. Inicializar Audio
         SoundManager.initialize(this)
@@ -63,9 +71,10 @@ class QuizActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.btnRestart).setOnClickListener { restartQuiz() }
 
         // 4. Obtener el tema
-        currentTopic = intent.getStringExtra("QUIZ_TOPIC") ?: "General"
+        currentTopic = intent.getStringExtra("QUIZ_TOPIC") ?: "Quiz"
+        contextType = intent.getStringExtra("EXTRA_CONTEXT_TYPE") ?: "GENERAL"
+        contextId = intent.getIntExtra("EXTRA_CONTEXT_ID", -1)
         tvTopicBadge.text = currentTopic.uppercase()
-
         // 5. Iniciar
         startQuiz()
     }
@@ -96,15 +105,29 @@ class QuizActivity : AppCompatActivity() {
     private fun startQuiz() {
         score = 0
         currentQuestionIndex = 0
-        questionsList = getQuestionsForTopic(currentTopic)
 
+        // --- ENRUTADOR DINÁMICO ---
+        // Comparamos en mayúsculas para evitar errores tipográficos
+        if (contextType.uppercase() == "VOCABULARY") {
+            // Si es vocabulario, generamos el examen al vuelo
+            questionsList = adminBd.generateVocabularyQuiz(contextId, 10)
+        } else {
+            // Si es Grammar o Reading, buscamos las preguntas guardadas en SQLite
+            questionsList = adminBd.getQuizQuestionsByContext(contextType, contextId, 10)
+        }
+
+        // IMPORTANTE: Adaptamos la barra de progreso al tamaño real
         if (questionsList.isNotEmpty()) {
             layoutResults.visibility = View.GONE
             layoutQuizContent.visibility = View.VISIBLE
             setQuestion()
         } else {
-            Toast.makeText(this, "No questions found for: $currentTopic", Toast.LENGTH_SHORT).show()
-            finish() // Si no hay preguntas, cerramos
+            Toast.makeText(
+                this,
+                "Próximamente: Más contenido para este tema.",
+                Toast.LENGTH_LONG
+            ).show()
+            finish() // Cierra el quiz si no hay preguntas/palabras
         }
     }
 

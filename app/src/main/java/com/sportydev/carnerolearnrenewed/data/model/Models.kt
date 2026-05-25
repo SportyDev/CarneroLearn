@@ -85,3 +85,20 @@ data class QuestionOption(
     val optionText: String,
     val isCorrect: Boolean // SQLite guarda 0 o 1, lo convertiremos en el AdminBd
 )
+
+// --- TABLA: Irregular_Verbs ---
+data class IrregularVerb(
+    val id: Int,
+    val baseForm: String,
+    val pastSimple: String,
+    val pastParticiple: String,
+    val translation: String,
+    val patternGroup: String
+)
+
+data class QuizResult(
+    val id: Int = 0,
+    val datePlayed: String,
+    val score: Int,
+    val total: Int
+)

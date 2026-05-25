@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarneroLearnRenewed">
         <activity
-            android:name=".ui.quiz.QuizActivity"
+            android:name=".ui.verbs.VerbLibraryActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.listening.ListeningDetailActivity"
+            android:name=".ui.verbs.VerbsQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.quiz.QuizActivity"
             android:exported="false" />
         <activity
             android:name=".ui.reading.ReadingDetailActivity"
@@ -24,13 +27,13 @@
             android:name=".ui.main.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.vocabulary.CategoryDetailActivity"
+            android:name=".ui.vocabulary.VocabularyDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.grammar.TopicDetail"
             android:exported="false" />
         <activity
-            android:name=".ui.listening.ListeningActivity"
+            android:name=".ui.verbs.VerbsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.vocabulary.VocabularyActivity"

@@ -72,6 +72,7 @@
             android:orientation="vertical"
             android:paddingBottom="32dp">
 
+            <!-- Stats Card Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,6 +102,7 @@
                             app:tint="#FF9800" />
 
                         <TextView
+                            android:id="@+id/tvStreakValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -133,6 +135,7 @@
                             app:tint="#03A9F4" />
 
                         <TextView
+                            android:id="@+id/tvXpValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -144,97 +147,105 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-
+            <!-- Quick Practice Section (Moved Up) -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
-                android:text="Daily Goals"
+                android:text="Quick Practice"
                 android:textColor="#2D3436"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.card.MaterialCardView
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
+                android:clipToPadding="false"
+                android:paddingStart="20dp"
+                android:paddingEnd="8dp"
+                android:scrollbars="none">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnQuickQuiz"
+                        android:layout_width="100dp"
+                        android:layout_height="110dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="2dp">
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_education"
-                            app:tint="#4CAF50" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:text="Complete 1 Lesson"
-                            android:textColor="#2D3436"
-                            android:textStyle="bold" />
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ic_education"
+                                app:tint="#F44336" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1/1"
-                            android:textColor="#4CAF50"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:text="Daily Quiz"
+                                android:textColor="#2D3436"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="12dp"
-                        android:background="#F0F0F0" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnQuickVerbs"
+                        android:layout_width="100dp"
+                        android:layout_height="110dp"
+                        android:layout_marginEnd="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="2dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_star_outline"
-                            app:tint="#BDBDBD" />
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ic_bolt"
+                                app:tint="#FF9800" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:text="Earn 500 XP"
-                            android:textColor="#757575" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="450/500"
-                            android:textColor="#757575"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:text="Verbs Quiz"
+                                android:textColor="#2D3436"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </HorizontalScrollView>
 
+            <!-- Up Next / Grammar Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -251,6 +262,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
                 app:cardBackgroundColor="#2196F3"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="4dp">
@@ -277,7 +291,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Irregular Verbs"
+                        android:text="Loading..."
                         android:textColor="#FFFFFF"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -286,10 +300,11 @@
                         app:layout_constraintTop_toBottomOf="@id/tvLessonTag" />
 
                     <TextView
+                        android:id="@+id/tvLessonLevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="10 min • Intermediate"
+                        android:text="Level"
                         android:textColor="#E3F2FD"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -300,6 +315,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_reading"
+                        android:clickable="false"
                         app:backgroundTint="#FFFFFF"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -309,6 +325,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Word of the Day Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -346,6 +363,21 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tvWodType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/bg_chip_white_alpha"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:text="noun"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@id/tvWodEnglish"
+                        app:layout_constraintStart_toEndOf="@id/tvWodEnglish"
+                        app:layout_constraintTop_toTopOf="@id/tvWodEnglish" />
+
+                    <TextView
                         android:id="@+id/tvWodPhonetic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -365,9 +397,23 @@
                         android:text="Finding interesting or valuable things by chance."
                         android:textColor="#FFFFFF"
                         android:textSize="15sp"
+                        android:textStyle="italic"
                         app:layout_constraintEnd_toStartOf="@id/btnWodListen"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvWodPhonetic" />
+
+                    <TextView
+                        android:id="@+id/tvWodExample"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Nature is full of serendipity."
+                        android:textColor="#E1D5F5"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toStartOf="@id/btnWodListen"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvWodMeaning" />
 
                     <ImageButton
                         android:id="@+id/btnWodListen"
@@ -383,6 +429,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Achievements Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -482,66 +529,7 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="32dp"
-                android:text="Quick Practice"
-                android:textColor="#2D3436"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:clipToPadding="false"
-                android:paddingStart="20dp"
-                android:paddingEnd="8dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="100dp"
-                        android:layout_height="110dp"
-                        android:layout_marginEnd="12dp"
-                        app:cardBackgroundColor="#FFFFFF"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="2dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="12dp">
-
-                            <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:src="@drawable/ic_education"
-                                app:tint="#F44336" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Daily Quiz"
-                                android:textColor="#2D3436"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
-            </HorizontalScrollView>
-
+            <!-- Tip Section -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -630,6 +618,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -652,6 +643,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -670,23 +664,27 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/nav_listening"
+                android:id="@+id/nav_verbs"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_listening"
+                    android:src="@drawable/ic_bolt"
                     app:tint="#B0BEC5" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Listen"
+                    android:layout_marginTop="2dp"
+                    android:text="Verbs"
                     android:textColor="#B0BEC5"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -696,6 +694,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:orientation="vertical">
 

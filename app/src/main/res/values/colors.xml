@@ -22,4 +22,6 @@
 
     <color name="reading_background_color">#E5F4EF</color>
     <color name="reading_icon_tint_color">#019863</color>
+
+    <color name="blue_dark">#1A237E</color>
 </resources>

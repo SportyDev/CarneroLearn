@@ -1,5 +1,6 @@
 package com.sportydev.carnerolearnrenewed.ui.grammar
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -10,8 +11,11 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.sportydev.carnerolearnrenewed.R
+import com.sportydev.carnerolearnrenewed.data.local.AdminBd
 import com.sportydev.carnerolearnrenewed.ui.base.BaseActivity
+import com.sportydev.carnerolearnrenewed.ui.quiz.QuizActivity
 
 class TopicDetail : BaseActivity() {
 
@@ -26,11 +30,15 @@ class TopicDetail : BaseActivity() {
             insets
         }
 
-        // 1. Obtener referencias
+        // 1. Inicializar Base de Datos
+        val adminBd = AdminBd(this)
+
+        // 2. Obtener referencias
         val headerBg = findViewById<View>(R.id.headerBackground)
         val ivWatermark = findViewById<ImageView>(R.id.ivWatermark)
         val tvTitle = findViewById<TextView>(R.id.tvTopicTitle)
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        val fabPractice = findViewById<ExtendedFloatingActionButton>(R.id.btnStartQuiz)
 
         // Vistas de contenido
         val tvStructure = findViewById<TextView>(R.id.tvGrammarStructure)
@@ -45,8 +53,10 @@ class TopicDetail : BaseActivity() {
         val lblExplanation = findViewById<TextView>(R.id.lblExplanation)
         val lblExamples = findViewById<TextView>(R.id.lblExamples)
 
-        // 2. Obtener datos del Intent
-        val title = intent.getStringExtra("EXTRA_TITLE")
+        // 3. Obtener datos del Intent
+        // IMPORTANTE: Necesitamos recibir el ID del tema desde la pantalla anterior
+        val topicId = intent.getIntExtra("EXTRA_ID", -1)
+        val title = intent.getStringExtra("EXTRA_TITLE") ?: "Grammar Topic"
         val structure = intent.getStringExtra("EXTRA_STRUCTURE")
         val content = intent.getStringExtra("EXTRA_CONTENT")
         val ex1 = intent.getStringExtra("EXTRA_EXAMPLE_1")
@@ -57,35 +67,82 @@ class TopicDetail : BaseActivity() {
         val colorHex = intent.getStringExtra("EXTRA_COLOR") ?: "#5C6BC0"
         val iconRes = intent.getIntExtra("EXTRA_ICON", R.drawable.ic_time)
 
-        // 3. Aplicar datos
+// Pon esto temporalmente para depurar:
+//        android.widget.Toast.makeText(
+//            this,
+//            "ID recibido: $topicId, Preguntas: ${
+//                adminBd.getQuestionCountForContext(
+//                    "Grammar",
+//                    topicId
+//                )
+//            }",
+//            android.widget.Toast.LENGTH_LONG
+//        ).show()
+
+        // 4. Aplicar datos a las vistas
         tvTitle.text = title
         tvStructure.text = structure
         tvContent.text = content
-        tvEx1.text = ex1
-        tvEx2.text = ex2
-        tvEx3.text = ex3
         tvMistake.text = mistake
 
-        // 4. Aplicar Estilos Dinamicos (Color y Icono)
+        // Ejemplos dinámicos
+        if (!ex1.isNullOrEmpty()) {
+            tvEx1.text = ex1; tvEx1.visibility = View.VISIBLE
+        } else {
+            tvEx1.visibility = View.GONE
+        }
+        if (!ex2.isNullOrEmpty()) {
+            tvEx2.text = ex2; tvEx2.visibility = View.VISIBLE
+        } else {
+            tvEx2.visibility = View.GONE
+        }
+        if (!ex3.isNullOrEmpty()) {
+            tvEx3.text = ex3; tvEx3.visibility = View.VISIBLE
+        } else {
+            tvEx3.visibility = View.GONE
+        }
+
+        // 5. Aplicar Estilos Dinámicos (Color e Icono)
         try {
             val color = Color.parseColor(colorHex)
-
-            // Fondo Curvo Header
             headerBg.backgroundTintList = ColorStateList.valueOf(color)
-
-            // Icono Marca de Agua
             ivWatermark.setImageResource(iconRes)
-
-            // Colorear los títulos de las secciones para que combinen
             lblStructure.setTextColor(color)
             lblExplanation.setTextColor(color)
             lblExamples.setTextColor(color)
 
+            // Que el botón combine con el color del tema
+            fabPractice.backgroundTintList = ColorStateList.valueOf(color)
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
-        // boton atras
+// --- LÓGICA DEL QUIZ DINÁMICO (VERSIÓN FINAL) ---
+        if (topicId != -1) {
+            // Ya no importa si le pasas "GRAMMAR", "Grammar" o "grammar"
+            val questionCount = adminBd.getQuestionCountForContext("GRAMMAR", topicId)
+
+            if (questionCount > 0) {
+                // Mostrar el botón
+                fabPractice.visibility = View.VISIBLE
+                fabPractice.alpha = 1f // Nos aseguramos de que no sea transparente
+
+                fabPractice.setOnClickListener {
+                    val quizIntent = Intent(this, QuizActivity::class.java)
+                    quizIntent.putExtra("QUIZ_TOPIC", title)
+                    quizIntent.putExtra("EXTRA_CONTEXT_TYPE", "GRAMMAR")
+                    quizIntent.putExtra("EXTRA_CONTEXT_ID", topicId)
+                    startActivity(quizIntent)
+                }
+            } else {
+                fabPractice.visibility = View.GONE
+            }
+        } else {
+            fabPractice.visibility = View.GONE
+        }
+
+
+        // Botón atrás
         btnBack.setOnClickListener { finish() }
     }
 }

@@ -1,18 +1,23 @@
 package com.sportydev.carnerolearnrenewed.ui.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sportydev.carnerolearnrenewed.R
-import com.sportydev.carnerolearnrenewed.utils.TtsManager
 import com.sportydev.carnerolearnrenewed.data.model.Word
+import com.sportydev.carnerolearnrenewed.utils.TtsManager
+import java.util.Locale
 
-class WordAdapter(private val words: List<Word>) :
-    RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
+class WordAdapter(
+    private var wordList: List<Word>,
+    private val categoryColorHex: String
+) : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
+
+    private var filteredList: List<Word> = wordList
 
     class WordViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvWord: TextView = view.findViewById(R.id.tvWord)
@@ -21,8 +26,7 @@ class WordAdapter(private val words: List<Word>) :
         val tvDefinition: TextView = view.findViewById(R.id.tvDefinition)
         val tvExample: TextView = view.findViewById(R.id.tvExample)
         val tvTranslation: TextView = view.findViewById(R.id.tvTranslation)
-        val btnPronounce: ImageButton = view.findViewById(R.id.btnPronounce)
-        val chkMastered: CheckBox = view.findViewById(R.id.chkMastered)
+        val btnAudio: ImageButton = view.findViewById(R.id.btnPronounce)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
@@ -32,47 +36,46 @@ class WordAdapter(private val words: List<Word>) :
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
-        val word = words[position]
-
-        // 1. Asignamos el campo 'word' (antes english)
+        val word = filteredList[position]
+        
         holder.tvWord.text = word.word
-
-        // 2. Manejamos nulos con el operador Elvis (?:) por si la BD viene vacía
         holder.tvPhonetic.text = word.phonetic ?: ""
         holder.tvType.text = word.type ?: ""
-
-        // 3. LA BD NO TIENE DEFINICIÓN EN INGLÉS, SOLO TRADUCCIÓN.
-        // Ocultamos el campo de definición para que no estorbe.
-        holder.tvDefinition.visibility = View.GONE
-        // O si prefieres usar la traducción ahí, descomenta la siguiente línea:
-        // holder.tvDefinition.text = word.translation
-
-        // 4. Asignamos el ejemplo (antes example)
-        if (word.exampleSentence != null) {
-            holder.tvExample.text = "\"${word.exampleSentence}\""
-            holder.tvExample.visibility = View.VISIBLE
-        } else {
-            holder.tvExample.visibility = View.GONE
+        holder.tvDefinition.text = word.translation // En item_word_card.xml tvDefinition parece ser el significado principal
+        holder.tvExample.text = word.exampleSentence ?: ""
+        holder.tvTranslation.text = word.translation
+        
+        // Aplicar color de la categoría a la traducción
+        try {
+            holder.tvTranslation.setTextColor(Color.parseColor(categoryColorHex))
+        } catch (e: Exception) {
+            holder.tvTranslation.setTextColor(Color.BLACK)
         }
 
-        // 5. Asignamos la traducción (antes spanish)
-        holder.tvTranslation.text = word.translation ?: "Sin traducción"
-
-        // 6. Configurar TTS con la palabra en inglés
-        holder.btnPronounce.setOnClickListener {
+        // Acción de Audio
+        holder.btnAudio.setOnClickListener {
             TtsManager.speak(word.word)
         }
-
-        // 7. LÓGICA DEL CHECKBOX (TEMPORALMENTE DESACTIVADA)
-        // Como el modelo 'Word' viene directo de la BD y no tiene campo 'isMastered',
-        // no podemos guardar el estado aquí directamente sin otra tabla.
-        holder.chkMastered.isChecked = false
-        holder.chkMastered.isEnabled = false // Lo deshabilitamos visualmente por ahora
-
-        /* Lógica futura: Aquí deberías consultar a la tabla 'User_Favorite_Words'
-           para ver si esta palabra está marcada.
-        */
     }
 
-    override fun getItemCount() = words.size
+    override fun getItemCount() = filteredList.size
+
+    fun filter(query: String) {
+        val lowerQuery = query.lowercase(Locale.ROOT)
+        filteredList = if (lowerQuery.isEmpty()) {
+            wordList
+        } else {
+            wordList.filter { 
+                it.word.lowercase(Locale.ROOT).contains(lowerQuery) ||
+                (it.translation?.lowercase(Locale.ROOT)?.contains(lowerQuery) == true)
+            }
+        }
+        notifyDataSetChanged()
+    }
+
+    fun updateList(newList: List<Word>) {
+        wordList = newList
+        filteredList = newList
+        notifyDataSetChanged()
+    }
 }
